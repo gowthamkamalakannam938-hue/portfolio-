@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gowtham | Cybersecurity Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0a0f0f;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #151f1f;
+            padding: 1.2rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #00ff9d;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            color: #00ff9d;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #00ff9d;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, #0a0f0f 0%, #1a2a2a 100%);
+            border-bottom: 1px solid #2a3a3a;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: #00ff9d;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #b0b0b0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: transparent;
+            color: #00ff9d;
+            border: 2px solid #00ff9d;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #00ff9d;
+            color: #0a0f0f;
+        }
+
+        /* About Section */
+        .about {
+            padding: 6rem 0;
+            background-color: #0f1616;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: #00ff9d;
+        }
+
+        .about-content {
+            display: flex;
+            gap: 4rem;
+            align-items: flex-start;
+        }
+
+        .about-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .profile-photo {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            border: 4px solid #00ff9d;
+            margin-bottom: 1.5rem;
+            background-color: #2a3a3a;
+            overflow: hidden;
+            margin: 0 auto 1.5rem auto;
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .signature {
+            margin-top: 1rem;
+            border-top: 2px dashed #3a4a4a;
+            padding-top: 1rem;
+        }
+
+        .signature img {
+            max-width: 200px;
+            height: auto;
+        }
+
+        .about-text {
+            flex: 2;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: #b0b0b0;
+        }
+
+        .skills {
+            margin-top: 2rem;
+            background-color: #1a2525;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid #00ff9d;
+        }
+
+        .skills h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .skill-tag {
+            background-color: #2a3a3a;
+            color: #00ff9d;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid #3a4a4a;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 6rem 0;
+            background-color: #0a0f0f;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: #151f1f;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #2a3a3a;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 255, 157, 0.1);
+            border-color: #00ff9d;
+        }
+
+        .project-image {
+            height: 200px;
+            background-color: #1a2a2a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid #2a3a3a;
+        }
+
+        .project-image span {
+            font-size: 3rem;
+            color: #00ff9d;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: #fff;
+        }
+
+        .project-content p {
+            color: #b0b0b0;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .project-tag {
+            background-color: #1a2a2a;
+            color: #00ff9d;
+            padding: 0.2rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        .project-link {
+            color: #00ff9d;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 0;
+            background-color: #0f1616;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+
+        .contact-info p {
+            color: #b0b0b0;
+            margin-bottom: 2rem;
+        }
+
+        .contact-details {
+            list-style: none;
+        }
+
+        .contact-details li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-details li span:first-child {
+            color: #00ff9d;
+            font-size: 1.2rem;
+        }
+
+        .contact-details li a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-details li a:hover {
+            color: #00ff9d;
+        }
+
+        .contact-form {
+            background-color: #1a2525;
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid #2a3a3a;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: #2a3a3a;
+            border: 1px solid #3a4a4a;
+            border-radius: 5px;
+            color: #e0e0e0;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #00ff9d;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: transparent;
+            color: #00ff9d;
+            border: 2px solid #00ff9d;
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background-color: #00ff9d;
+            color: #0a0f0f;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0a0f0f;
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid #2a3a3a;
+        }
+
+        .social-links {
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: #e0e0e0;
+            margin: 0 1rem;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #00ff9d;
+        }
+
+        /* Music Player */
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #151f1f;
+            border: 2px solid #00ff9d;
+            border-radius: 50px;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 1000;
+            box-shadow: 0 0 20px rgba(0, 255, 157, 0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        .music-player button {
+            background: none;
+            border: none;
+            color: #00ff9d;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .music-player button:hover {
+            transform: scale(1.1);
+        }
+
+        .music-player .song-info {
+            color: #e0e0e0;
+            font-size: 0.9rem;
+            max-width: 150px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .music-player input[type="range"] {
+            width: 100px;
+            height: 5px;
+            background: #2a3a3a;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .music-player input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 15px;
+            height: 15px;
+            background: #00ff9d;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .volume-control span {
+            color: #00ff9d;
+            font-size: 1.2rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .profile-photo {
+                width: 200px;
+                height: 200px;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .music-player {
+                bottom: 10px;
+                right: 10px;
+                padding: 8px 15px;
+            }
+
+            .music-player .song-info {
+                max-width: 100px;
+            }
+
+            .music-player input[type="range"] {
+                width: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">Gowtham</a>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Gowtham</h1>
+            <p>Cybersecurity Student & Ethical Hacking Enthusiast</p>
+            <a href="#projects" class="cta-button">View My Work</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <!-- Photo Section -->
+                    <div class="profile-photo">
+                        <img src="Gowtham.jpg" alt="Gowtham">
+                    </div>
+                    
+                    <!-- Signature Section -->
+                    <div class="signature">
+                        <img src="Gowtham.png" alt="Gowtham Signature">
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h3>Hi, I'm Gowtham</h3>
+                    <p>I'm a passionate cybersecurity student with a deep interest in ethical hacking, networking, and data science. I believe in using my skills to make the digital world a safer place, one vulnerability at a time.</p>
+                    <p>Currently, I'm diving deep into network protocols, penetration testing methodologies, and how machine learning can be applied to detect security threats. I love the challenge of thinking like an attacker to build better defenses.</p>
+                    <p>When I'm not studying or practicing on platforms like TryHackMe and Hack The Box, you can find me contributing to open-source security tools or participating in CTF competitions.</p>
+                    
+                    <div class="skills">
+                        <h4>Skills & Tools</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Kali Linux</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Nmap</span>
+                            <span class="skill-tag">Wireshark</span>
+                            <span class="skill-tag">Metasploit</span>
+                            <span class="skill-tag">Burp Suite</span>
+                            <span class="skill-tag">Networking</span>
+                            <span class="skill-tag">Data Analysis</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">Bash Scripting</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <span>🔒</span>
+                    </div>
+                    <div class="project-content">
+                        <h3>Network Scanner Tool</h3>
+                        <p>A Python-based network scanner that identifies active devices and open ports on a network. Helps in understanding network topology and potential entry points.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Scapy</span>
+                            <span class="project-tag">Networking</span>
+                        </div>
+                        <a href="#" class="project-link">Learn more →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <span>📊</span>
+                    </div>
+                    <div class="project-content">
+                        <h3>Log Analysis Dashboard</h3>
+                        <p>A data science project that analyzes server logs to detect suspicious patterns and potential security breaches using machine learning algorithms.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Pandas</span>
+                            <span class="project-tag">Scikit-learn</span>
+                        </div>
+                        <a href="#" class="project-link">Learn more →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <span>🌐</span>
+                    </div>
+                    <div class="project-content">
+                        <h3>CTF Challenge Write-ups</h3>
+                        <p>A collection of detailed write-ups for Capture The Flag challenges I've solved, covering various categories like web exploitation, cryptography, and forensics.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Write-ups</span>
+                            <span class="project-tag">CTF</span>
+                            <span class="project-tag">Security</span>
+                        </div>
+                        <a href="#" class="project-link">Learn more →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <span>🔐</span>
+                    </div>
+                    <div class="project-content">
+                        <h3>Password Strength Analyzer</h3>
+                        <p>A tool that analyzes password strength and provides recommendations using entropy calculations and common pattern detection.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">JavaScript</span>
+                            <span class="project-tag">Cryptography</span>
+                            <span class="project-tag">Web</span>
+                        </div>
+                        <a href="#" class="project-link">Learn more →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p>I'm always interested in discussing cybersecurity, collaborating on projects, or just having a chat about the latest in tech. Feel free to reach out!</p>
+                    <ul class="contact-details">
+                        <li>
+                            <span>📧</span>
+                            <a href="mailto:gowthamkamalakannan938@gmail.com">gowthamkamalakannan938@gmail.com</a>
+                        </li>
+                        <li>
+                            <span>📱</span>
+                            <a href="tel:8248712976">8248712976</a>
+                        </li>
+                        <li>
+                            <span>📍</span>
+                            <span>Vellore, India</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://github.com/gowthamkamalakannam938-hue" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/gowtham-k-march17" target="_blank">LinkedIn</a>
+                <a href="https://twitter.com/gowthamkmarch17" target="_blank">Twitter</a>
+                <a href="https://tryhackme.com/p/gowthamgt170308" target="_blank">TryHackMe</a>
+            </div>
+            <p>&copy; 2026 Gowtham. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Music Player -->
+    <div class="music-player">
+        <button id="playPauseBtn">▶️</button>
+        <div class="song-info" id="songInfo">My Favorite Song</div>
+        <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="0.5">
+        <div class="volume-control">
+            <span>🔊</span>
+        </div>
+    </div>
+
+    <audio id="audioPlayer" loop>
+        <!-- Add your song file here - replace "your-song.mp3" with your actual file name -->
+        <source src="Neelothi.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! (This is a demo - form submission is not actually sent)');
+            this.reset();
+        });
+
+        // Music Player Controls
+        const audio = document.getElementById('audioPlayer');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const volumeSlider = document.getElementById('volumeSlider');
+        const songInfo = document.getElementById('songInfo');
+
+        // Set initial volume
+        audio.volume = volumeSlider.value;
+
+        // Play/Pause functionality
+        playPauseBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                playPauseBtn.textContent = '⏸️';
+                songInfo.textContent = 'Now Playing: My Favorite Song';
+            } else {
+                audio.pause();
+                playPauseBtn.textContent = '▶️';
+                songInfo.textContent = 'Paused: My Favorite Song';
+            }
+        });
+
+        // Volume control
+        volumeSlider.addEventListener('input', (e) => {
+            audio.volume = e.target.value;
+        });
+
+        // Update button when song ends
+        audio.addEventListener('ended', () => {
+            playPauseBtn.textContent = '▶️';
+            songInfo.textContent = 'My Favorite Song';
+        });
+
+        // Auto-play? (commented out by default - uncomment if you want auto-play)
+        // window.addEventListener('load', () => {
+        //     audio.play();
+        //     playPauseBtn.textContent = '⏸️';
+        //     songInfo.textContent = 'Now Playing: My Favorite Song';
+        // });
+    </script>
+</body>
+</html>
